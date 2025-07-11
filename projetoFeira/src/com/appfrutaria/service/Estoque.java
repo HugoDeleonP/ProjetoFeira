@@ -92,6 +92,18 @@ public class Estoque {
 		return produto;
 	}
 
+	public void listarProduto(Atendente atendente, List<Produto> produtos) {
+
+		if(produtos.isEmpty()) {
+			System.out.println("Não há produto registrado");
+		}
+
+		for(int index = 0; index < produtos.size(); index++) {
+			Produto produto = produtos.get(index);
+			System.out.println(produtos.toString());
+		}
+	}
+
 	public boolean verificarTipo(int tipoDigitado){
 		boolean tipoProduto;
 		boolean tipoFruta;
@@ -106,10 +118,12 @@ public class Estoque {
 		switch(opcaoMenuUser) {
 			case 1 -> {
 				int opcaoTipo = atendente.tipoProduto();
+				Produto produto = gerenciarTipo(opcaoTipo, atendente);
+				produtos.add(produto);
 			}
 
 			case 2 -> {
-				estoque.listarFruta(atendente, frutas);
+				estoque.listarProduto(atendente, produtos);
 			}
 
 			case 3 -> {
@@ -133,14 +147,12 @@ public class Estoque {
 			case 1 ->{
 				Produto produto = new Produto();
 				produto = formerProduto(atendente);
-				produtos.add(produto);
 				return produto;
 			}
 
 			case 2 -> {
 				Fruta fruta = new Fruta();
 				fruta = formerFruta(atendente);
-				frutas.add(fruta);
 				return fruta;
 			}
 
