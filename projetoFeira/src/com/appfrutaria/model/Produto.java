@@ -42,5 +42,9 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
+    @Override
 
+    public String toString(){
+        return "Nome: " + nome + "\nPreço: " + preco + "\nQuantidade: " + quantidade;
+    }
 }

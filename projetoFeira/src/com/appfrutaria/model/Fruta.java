@@ -23,4 +23,8 @@ public class Fruta extends Produto{
 	public double getPeso() {
 		return peso;
 	}
+
+	public String toString(){
+		return "Nome: " + nome + "\nPreço: " + preco + "\nQuantidade: " + quantidade + "\nPeso: " + peso;
+	}
 }
