@@ -18,6 +18,17 @@ public class Estoque {
 		produtos = new ArrayList();
 	}
 
+	public List<Verdura> getVerduras(){
+		return verduras;
+	}
+
+	public void setVerduras(List<Verdura> verduras){
+		this.verduras = verduras;
+	}
+
+
+	//Fruta
+
 	public List<Fruta> getFrutas(){
 		return frutas;
 	}
@@ -37,22 +48,7 @@ public class Estoque {
 		return fruta;
 	}
 
-	public List<Verdura> getVerduras(){
-		return verduras;
-	}
 
-	public void setVerduras(List<Verdura> verduras){
-		this.verduras = verduras;
-	}
-
-	public List<Produto> getProdutos(){
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos){
-		this.produtos = produtos;
-	}
-	//Fruta
 	public void listarFruta(Atendente atendente, List<Fruta> frutas) {
 
 		if(frutas.isEmpty()) {
@@ -76,7 +72,17 @@ public class Estoque {
 
 	}
 
-	public boolean verificarTipo(){
+	//Produto
+
+	public List<Produto> getProdutos(){
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos){
+		this.produtos = produtos;
+	}
+
+	public boolean verificarTipo(int tipoDigitado){
 		boolean tipoProduto;
 		boolean tipoFruta;
 		boolean tipoVerdura;
@@ -89,9 +95,9 @@ public class Estoque {
 		int index = 0;
 		switch(opcaoMenuUser) {
 			case 1 -> {
-				int tipoProduto = atendente.tipoProduto();
-				Fruta fruta = estoque.formerFruta(atendente);
-				frutas.add(fruta);
+				int opcaoTipo = atendente.tipoProduto();
+
+
 			}
 
 			case 2 -> {
@@ -111,6 +117,31 @@ public class Estoque {
 			}
 
 
+		}
+	}
+
+	public Produto gerenciarTipo(int opcaoTipo, Atendente atendente){
+		switch(opcaoTipo){
+			case 1 ->{
+				Produto produto = new Produto();
+				return produto;
+			}
+
+			case 2 -> {
+				Fruta fruta = new Fruta();
+				fruta = formerFruta(atendente);
+				frutas.add(fruta);
+				return fruta;
+			}
+
+			case 3 ->{
+				Verdura verdura = new Verdura();
+				return verdura;
+			}
+
+			default ->{
+				return null;
+			}
 		}
 	}
 
