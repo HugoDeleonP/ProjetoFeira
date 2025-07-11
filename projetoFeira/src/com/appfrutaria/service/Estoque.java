@@ -82,6 +82,16 @@ public class Estoque {
 		this.produtos = produtos;
 	}
 
+	public Produto formerProduto(Atendente atendente){
+		String nome = atendente.writeNome();
+		double preco = atendente.writePreco();
+		int quantidade = atendente.writeQuantidade();
+
+		Produto produto = new Produto(nome, preco, quantidade);
+
+		return produto;
+	}
+
 	public boolean verificarTipo(int tipoDigitado){
 		boolean tipoProduto;
 		boolean tipoFruta;
@@ -96,8 +106,6 @@ public class Estoque {
 		switch(opcaoMenuUser) {
 			case 1 -> {
 				int opcaoTipo = atendente.tipoProduto();
-
-
 			}
 
 			case 2 -> {
@@ -124,6 +132,8 @@ public class Estoque {
 		switch(opcaoTipo){
 			case 1 ->{
 				Produto produto = new Produto();
+				produto = formerProduto(atendente);
+				produtos.add(produto);
 				return produto;
 			}
 
