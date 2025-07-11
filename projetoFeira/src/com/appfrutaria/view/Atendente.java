@@ -14,6 +14,20 @@ public class Atendente {
 		input = new Scanner(System.in);
 	}
 
+	public int tipoProduto(){
+		System.out.println("=-----------| MENU |------------=");
+		System.out.println("|  1 - Produto                  |");
+		System.out.println("|  2 - Fruta                    |");
+		System.out.println("|  3 - Verdura                  |");
+		System.out.println("=-------------------------------=");
+		System.out.print("\nDigite o tipo: >");
+
+		int opcaoTipo = input.nextInt();
+		input.nextLine();
+
+		return opcaoTipo;
+	}
+
 	public int menuPrincipal() {
 		int opcaoMenu;
 
@@ -24,6 +38,7 @@ public class Atendente {
 		System.out.println("|  3 - Remover produto		    |");
 		System.out.println("|  4 - Sair			            |");
 		System.out.println("=-------------------------------=");
+		System.out.print("\nDigite a opção que deseja: >");
 
 		opcaoMenu = input.nextInt();
 		input.nextLine();
@@ -50,12 +65,10 @@ public class Atendente {
 	}
 
 	public int writeQuantidade() {
-
 		int quantidade = 0;
 		System.out.println("Digite a quantidade de produto: ");
 		quantidade = input.nextInt();
 		input.nextLine();
-
 
 		return quantidade;
 	}
@@ -72,14 +85,6 @@ public class Atendente {
 		System.out.println("Digite o indice do produto que gostaria de tirar: ");
 		int index = input.nextInt();
 		return index;
-	}
-
-	public void printFruta(int index, Fruta fruta) {
-		System.out.println("=============| " + index + " |===============");
-		System.out.println("Nome: " + fruta.getNome());
-		System.out.println("Preço: " + fruta.getPreco());
-		System.out.println("Quantidade: " + fruta.getQuantidade());
-		System.out.println("---------------------------------");
 	}
 
 

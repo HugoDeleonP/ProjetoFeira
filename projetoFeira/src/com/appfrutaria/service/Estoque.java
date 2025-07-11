@@ -52,7 +52,7 @@ public class Estoque {
 	public void setProdutos(List<Produto> produtos){
 		this.produtos = produtos;
 	}
-
+	//Fruta
 	public void listarFruta(Atendente atendente, List<Fruta> frutas) {
 
 		if(frutas.isEmpty()) {
@@ -61,7 +61,7 @@ public class Estoque {
 
 		for(int index = 0; index < frutas.size(); index++) {
 			Fruta fruta = frutas.get(index);
-			atendente.printFruta(index, fruta);
+			System.out.println(fruta.toString());
 		}
 	}
 
@@ -76,10 +76,20 @@ public class Estoque {
 
 	}
 
+	public boolean verificarTipo(){
+		boolean tipoProduto;
+		boolean tipoFruta;
+		boolean tipoVerdura;
+
+
+		return false;
+	}
+
 	public void gerenciarEstoque(Atendente atendente, Estoque estoque, int opcaoMenuUser) {
 		int index = 0;
 		switch(opcaoMenuUser) {
 			case 1 -> {
+				int tipoProduto = atendente.tipoProduto();
 				Fruta fruta = estoque.formerFruta(atendente);
 				frutas.add(fruta);
 			}
