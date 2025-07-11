@@ -4,13 +4,18 @@ import com.appfrutaria.view.Atendente;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.appfrutaria.model.Verdura;
+import com.appfrutaria.model.Produto;
 
 public class Estoque {
 
 	List<Fruta> frutas = new ArrayList<>();
-
+	List<Verdura> verduras = new ArrayList<>();
+	List<Produto> produtos = new ArrayList<>();
 	public Estoque() {
 		frutas = new ArrayList();
+		verduras = new ArrayList();
+		produtos = new ArrayList();
 	}
 
 	public List<Fruta> getFrutas(){

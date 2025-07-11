@@ -5,6 +5,8 @@ import java.util.Scanner;
 import com.appfrutaria.view.Atendente;
 import com.appfrutaria.model.Fruta;
 import com.appfrutaria.service.Estoque;
+import com.appfrutaria.model.Produto;
+import com.appfrutaria.model.Verdura;
 
 public class Main {
 
@@ -15,7 +17,9 @@ public class Main {
 
 		Atendente atendente = new Atendente();
 		Estoque estoque = new Estoque();
+		Produto produto = new Produto();
 		Fruta fruta = new Fruta();
+		Verdura verdura = new Verdura();
 
 		do {
 			opcaoMenuUser = atendente.menuPrincipal();
