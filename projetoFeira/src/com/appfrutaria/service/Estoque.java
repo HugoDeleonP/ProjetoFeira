@@ -12,10 +12,11 @@ public class Estoque {
 	private List<Fruta> frutas = new ArrayList<>();
 	private List<Verdura> verduras = new ArrayList<>();
 	private List<Produto> produtos = new ArrayList<>();
+
 	public Estoque() {
-		frutas = new ArrayList();
-		verduras = new ArrayList();
-		produtos = new ArrayList();
+		frutas = new ArrayList<>();
+		verduras = new ArrayList<>();
+		produtos = new ArrayList<>();
 	}
 
 	public List<Verdura> getVerduras(){
@@ -43,33 +44,7 @@ public class Estoque {
 		int quantidade = atendente.writeQuantidade();
 		double peso = atendente.writePeso();
 
-		Fruta fruta = new Fruta(nome, preco, quantidade, peso);
-
-		return fruta;
-	}
-
-
-	public void listarFruta(Atendente atendente, List<Fruta> frutas) {
-
-		if(frutas.isEmpty()) {
-			System.out.println("Não há produto registrado");
-		}
-
-		for(int index = 0; index < frutas.size(); index++) {
-			Fruta fruta = frutas.get(index);
-			System.out.println(fruta.toString());
-		}
-	}
-
-	public void removerFruta(int index, Atendente atendente) {
-
-		try {
-			frutas.remove(index);
-		}
-		catch(Exception e){
-			atendente.indexInvalido();
-		}
-
+		return new Fruta(nome, preco, quantidade, peso);
 	}
 
 	//Produto
@@ -87,9 +62,7 @@ public class Estoque {
 		double preco = atendente.writePreco();
 		int quantidade = atendente.writeQuantidade();
 
-		Produto produto = new Produto(nome, preco, quantidade);
-
-		return produto;
+        return new Produto(nome, preco, quantidade);
 	}
 
 	public void listarProduto(Atendente atendente, List<Produto> produtos) {
@@ -100,8 +73,19 @@ public class Estoque {
 
 		for(int index = 0; index < produtos.size(); index++) {
 			Produto produto = produtos.get(index);
-			System.out.println(produtos.toString());
+			System.out.println(produto);
 		}
+	}
+
+	public void removerFruta(int index, Atendente atendente) {
+
+		try {
+			frutas.remove(index);
+		}
+		catch(Exception e){
+			atendente.indexInvalido();
+		}
+
 	}
 
 	public boolean verificarTipo(int tipoDigitado){
@@ -113,7 +97,7 @@ public class Estoque {
 		return false;
 	}
 
-	public void gerenciarEstoque(Atendente atendente, Estoque estoque, int opcaoMenuUser) {
+	public void gerenciarEstoque(Atendente atendente, int opcaoMenuUser) {
 		int index = 0;
 		switch(opcaoMenuUser) {
 			case 1 -> {
@@ -123,12 +107,12 @@ public class Estoque {
 			}
 
 			case 2 -> {
-				estoque.listarProduto(atendente, produtos);
+				listarProduto(atendente, produtos);
 			}
 
 			case 3 -> {
 				index = atendente.writeIndex();
-				estoque.removerFruta(index, atendente);
+				removerFruta(index, atendente);
 			}
 			case 4 -> {
 				return;
@@ -151,13 +135,14 @@ public class Estoque {
 			}
 
 			case 2 -> {
-				Fruta fruta = new Fruta();
+				Produto fruta = new Fruta();
 				fruta = formerFruta(atendente);
 				return fruta;
 			}
 
 			case 3 ->{
-				Verdura verdura = new Verdura();
+				Produto verdura = new Verdura();
+
 				return verdura;
 			}
 

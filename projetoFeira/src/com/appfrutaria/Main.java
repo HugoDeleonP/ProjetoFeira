@@ -23,7 +23,7 @@ public class Main {
 
 		do {
 			opcaoMenuUser = atendente.menuPrincipal();
-			estoque.gerenciarEstoque(atendente, estoque, opcaoMenuUser);
+			estoque.gerenciarEstoque(atendente, opcaoMenuUser);
 
 		} while (opcaoMenuUser != 4);
 
