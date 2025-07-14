@@ -47,13 +47,14 @@ public class Atendente {
 		return opcaoMenu;
 	}
 
-
+	public void showIndex(int index){
+		System.out.println("=-----------| "+ index + " |-----------=");
+	}
 
 	public String writeNome() {
 		System.out.println("Digite o nome do produto: ");
-		String nome = input.nextLine();
 
-		return nome;
+		return input.nextLine();
 	}
 
 	public double writePreco() {
@@ -79,6 +80,11 @@ public class Atendente {
 		input.nextLine();
 
 		return peso;
+	}
+
+	public String writeTipo(){
+		System.out.println("Digite o tipo de verdura: ");
+		return input.nextLine();
 	}
 
 	public int writeIndex() {

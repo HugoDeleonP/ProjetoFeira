@@ -17,9 +17,6 @@ public class Main {
 
 		Atendente atendente = new Atendente();
 		Estoque estoque = new Estoque();
-		Produto produto = new Produto();
-		Fruta fruta = new Fruta();
-		Verdura verdura = new Verdura();
 
 		do {
 			opcaoMenuUser = atendente.menuPrincipal();
