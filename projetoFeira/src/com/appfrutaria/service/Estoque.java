@@ -105,12 +105,14 @@ public class Estoque {
 	}
 
 	public void listarProduto(Atendente atendente,  int escolha){
+
+		if(produtos.isEmpty()) {
+            atendente.ausenciaProduto();
+            return;
+		}
+
 		switch (escolha){
 			case 1 -> {
-				if(produtos.isEmpty()) {
-					System.out.println("Não há produto registrado");
-				}
-
 				for(int index = 0; index < produtos.size(); index++) {
 					Produto produto = produtos.get(index);
 					atendente.showIndex(index);
