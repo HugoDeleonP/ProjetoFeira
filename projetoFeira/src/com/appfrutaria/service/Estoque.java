@@ -88,6 +88,7 @@ public class Estoque {
 
 			case 3 -> {
 				int escolha = atendente.menuLista("Remoção ");
+				listarProduto(atendente, escolha);
 				index = atendente.writeIndex();
 				removerProduto(escolha, index, atendente);
 			}
@@ -118,17 +119,19 @@ public class Estoque {
 			}
 
 			case 2 ->{
-				for(Produto frutaUnit: produtos){
-					if(frutaUnit instanceof Fruta fruta){
-						System.out.println(frutaUnit);
+				for(int index = 0; index <produtos.size(); index++){
+					if(produtos.get(index) instanceof Fruta fruta){
+						atendente.showIndex(index);
+						System.out.println(fruta);
 					}
 				}
 			}
 
 			case 3 ->{
-				for(Produto verduraUnit: produtos){
-					if(verduraUnit instanceof Verdura verdura){
-						System.out.println(verduraUnit);
+				for (int index = 0; index < produtos.size(); index++){
+					if(produtos.get(index) instanceof Verdura verdura){
+						atendente.showIndex(index);
+						System.out.println(verdura);
 					}
 				}
 			}
@@ -159,6 +162,7 @@ public class Estoque {
 			}
 
 			case 3->{
+
 				for(index = 0; index < produtos.size(); index++){
 					if(produtos.get(index) instanceof Verdura verdura){
 						produtos.remove(index);
