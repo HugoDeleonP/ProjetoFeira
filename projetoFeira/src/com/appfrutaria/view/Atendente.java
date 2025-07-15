@@ -16,9 +16,8 @@ public class Atendente {
 
 	public int tipoProduto(){
 		System.out.println("=-----------| MENU |------------=");
-		System.out.println("|  1 - Produto                  |");
-		System.out.println("|  2 - Fruta                    |");
-		System.out.println("|  3 - Verdura                  |");
+		System.out.println("|  1 - Fruta                    |");
+		System.out.println("|  2 - Verdura                  |");
 		System.out.println("=-------------------------------=");
 		System.out.print("\nDigite o tipo: >");
 
