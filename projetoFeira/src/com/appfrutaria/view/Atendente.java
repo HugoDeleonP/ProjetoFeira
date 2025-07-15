@@ -46,8 +46,8 @@ public class Atendente {
 		return opcaoMenu;
 	}
 
-	public int menuLista(){
-		System.out.println("=---------| Listagem |----------=");
+	public int menuLista(String tipoOperacao){
+		System.out.println("=---------| " + tipoOperacao +" |----------=");
 		System.out.println("|  1 - Todos                    |");
 		System.out.println("|  2 - Frutas                   |");
 		System.out.println("|  3 - Verduras                 |");

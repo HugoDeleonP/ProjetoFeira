@@ -27,7 +27,6 @@ public class Estoque {
 		this.verduras = verduras;
 	}
 
-
 	//Fruta
 
 	public List<Fruta> getFrutas(){
@@ -72,30 +71,6 @@ public class Estoque {
 		return new Verdura(nome, preco, quantidade, tipo);
 	}
 
-	public void listarProduto(Atendente atendente, List<Produto> produtos) {
-
-		if(produtos.isEmpty()) {
-			System.out.println("Não há produto registrado");
-		}
-
-		for(int index = 0; index < produtos.size(); index++) {
-			Produto produto = produtos.get(index);
-			atendente.showIndex(index);
-			System.out.println(produto);
-		}
-	}
-
-
-	public void removerProduto(int index, Atendente atendente) {
-
-		try {
-			produtos.remove(index);
-		}
-		catch(Exception e){
-			atendente.indexInvalido();
-		}
-
-	}
 
 	public void gerenciarEstoque(Atendente atendente, int opcaoMenuUser) {
 		int index = 0;
@@ -107,12 +82,14 @@ public class Estoque {
 			}
 
 			case 2 -> {
-				listarProduto(atendente, produtos);
+				int escolha = atendente.menuLista("Listagem");
+				listarProduto(atendente, escolha);
 			}
 
 			case 3 -> {
+				int escolha = atendente.menuLista("Remoção ");
 				index = atendente.writeIndex();
-				removerProduto(index, atendente);
+				removerProduto(escolha, index, atendente);
 			}
 			case 4 -> {
 				return;
@@ -124,6 +101,73 @@ public class Estoque {
 
 
 		}
+	}
+
+	public void listarProduto(Atendente atendente,  int escolha){
+		switch (escolha){
+			case 1 -> {
+				if(produtos.isEmpty()) {
+					System.out.println("Não há produto registrado");
+				}
+
+				for(int index = 0; index < produtos.size(); index++) {
+					Produto produto = produtos.get(index);
+					atendente.showIndex(index);
+					System.out.println(produto);
+				}
+			}
+
+			case 2 ->{
+				for(Produto frutaUnit: produtos){
+					if(frutaUnit instanceof Fruta fruta){
+						System.out.println(frutaUnit);
+					}
+				}
+			}
+
+			case 3 ->{
+				for(Produto verduraUnit: produtos){
+					if(verduraUnit instanceof Verdura verdura){
+						System.out.println(verduraUnit);
+					}
+				}
+			}
+		}
+	}
+
+
+	public void removerProduto(int escolha, int index, Atendente atendente) {
+
+		switch (escolha){
+			case 1 ->{
+				try {
+					produtos.remove(index);
+				}
+				catch(Exception e){
+					atendente.indexInvalido();
+				}
+
+			}
+
+			case 2 ->{
+				for(index = 0; index < produtos.size(); index++){
+					if(produtos.get(index) instanceof Fruta fruta){
+						produtos.remove(index);
+					}
+
+				}
+			}
+
+			case 3->{
+				for(index = 0; index < produtos.size(); index++){
+					if(produtos.get(index) instanceof Verdura verdura){
+						produtos.remove(index);
+					}
+				}
+			}
+		}
+
+
 	}
 
 	public Produto gerenciarTipo(int opcaoTipo, Atendente atendente){
