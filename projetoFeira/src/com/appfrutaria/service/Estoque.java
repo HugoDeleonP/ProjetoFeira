@@ -128,18 +128,12 @@ public class Estoque {
 	public Produto gerenciarTipo(int opcaoTipo, Atendente atendente){
 		switch(opcaoTipo){
 			case 1 ->{
-				Produto produto = new Produto();
-				produto = formerProduto(atendente);
-				return produto;
-			}
-
-			case 2 -> {
 				Produto fruta = new Fruta();
 				fruta = formerFruta(atendente);
 				return fruta;
 			}
 
-			case 3 ->{
+			case 2 -> {
 				Produto verdura = new Verdura();
 				verdura = formerVerdura(atendente);
 
