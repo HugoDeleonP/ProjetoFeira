@@ -85,6 +85,7 @@ public class Estoque {
 		}
 	}
 
+
 	public void removerProduto(int index, Atendente atendente) {
 
 		try {

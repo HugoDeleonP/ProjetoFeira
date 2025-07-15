@@ -46,6 +46,20 @@ public class Atendente {
 		return opcaoMenu;
 	}
 
+	public int menuLista(){
+		System.out.println("=---------| Listagem |----------=");
+		System.out.println("|  1 - Todos                    |");
+		System.out.println("|  2 - Frutas                   |");
+		System.out.println("|  3 - Verduras                 |");
+		System.out.println("=-------------------------------=");
+		System.out.print("\nDigite o filtro de pesquisa: >");
+
+		int opcao = input.nextInt();
+		input.nextLine();
+
+		return opcao;
+	}
+
 	public void showIndex(int index){
 		System.out.println("=-----------| "+ index + " |-----------=");
 	}
