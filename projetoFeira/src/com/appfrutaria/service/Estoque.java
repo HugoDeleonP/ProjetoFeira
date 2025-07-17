@@ -137,6 +137,10 @@ public class Estoque {
 					}
 				}
 			}
+
+			default -> {
+				atendente.numeroInvalido();
+			}
 		}
 	}
 
@@ -171,6 +175,10 @@ public class Estoque {
 					}
 				}
 			}
+
+			default -> {
+				atendente.numeroInvalido();
+			}
 		}
 
 
@@ -192,6 +200,7 @@ public class Estoque {
 			}
 
 			default ->{
+				atendente.numeroInvalido();
 				return null;
 			}
 		}
