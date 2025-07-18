@@ -165,13 +165,7 @@ public class Estoque {
 
 		switch (escolha){
 			case 1 ->{
-				try {
 					produtos.remove(index);
-				}
-				catch(Exception e){
-					atendente.indexInvalido();
-				}
-
 			}
 
 			case 2 ->{

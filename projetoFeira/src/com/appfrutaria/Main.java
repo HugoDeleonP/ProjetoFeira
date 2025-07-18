@@ -1,5 +1,6 @@
 package com.appfrutaria;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.appfrutaria.view.Atendente;
@@ -17,12 +18,15 @@ public class Main {
 
 		Atendente atendente = new Atendente();
 		Estoque estoque = new Estoque();
+		try{
+			do {
+				opcaoMenuUser = atendente.menuPrincipal();
+				estoque.gerenciarEstoque(atendente, opcaoMenuUser);
 
-		do {
-			opcaoMenuUser = atendente.menuPrincipal();
-			estoque.gerenciarEstoque(atendente, opcaoMenuUser);
-
-		} while (opcaoMenuUser != 4);
+			} while (opcaoMenuUser != 4);
+		} catch (InputMismatchException e){
+			atendente.erroTipoDado();
+		}
 
 	}
 }
