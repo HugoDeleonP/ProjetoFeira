@@ -106,6 +106,8 @@ public class Estoque {
 
 	public void listarProduto(Atendente atendente,  int escolha){
 
+		boolean presencaElemento = false;
+
 		if(produtos.isEmpty()) {
             atendente.ausenciaProduto();
             return;
@@ -125,7 +127,13 @@ public class Estoque {
 					if(produtos.get(index) instanceof Fruta fruta){
 						atendente.showIndex(index);
 						System.out.println(fruta);
+						presencaElemento = true;
 					}
+				}
+
+				if(presencaElemento == false){
+					atendente.ausenciaFruta();
+					return;
 				}
 			}
 
@@ -134,7 +142,13 @@ public class Estoque {
 					if(produtos.get(index) instanceof Verdura verdura){
 						atendente.showIndex(index);
 						System.out.println(verdura);
+						presencaElemento = true;
 					}
+				}
+
+				if (presencaElemento == false){
+					atendente.ausenciaVerdura();
+					return;
 				}
 			}
 
@@ -146,6 +160,8 @@ public class Estoque {
 
 
 	public void removerProduto(int escolha, int index, Atendente atendente) {
+
+		boolean presencaElemento = false;
 
 		switch (escolha){
 			case 1 ->{
@@ -162,8 +178,14 @@ public class Estoque {
 				for(index = 0; index < produtos.size(); index++){
 					if(produtos.get(index) instanceof Fruta fruta){
 						produtos.remove(index);
+						presencaElemento = true;
 					}
 
+				}
+
+				if(presencaElemento == false){
+					atendente.ausenciaFruta();
+					return;
 				}
 			}
 
@@ -172,7 +194,14 @@ public class Estoque {
 				for(index = 0; index < produtos.size(); index++){
 					if(produtos.get(index) instanceof Verdura verdura){
 						produtos.remove(index);
+						presencaElemento = true;
 					}
+
+				}
+
+				if(presencaElemento == false){
+					atendente.ausenciaVerdura();
+					return;
 				}
 			}
 

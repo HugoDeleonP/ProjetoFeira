@@ -106,8 +106,6 @@ public class Atendente {
 		return index;
 	}
 
-
-
 	public Scanner getInput() {
 		return input;
 	}
@@ -132,5 +130,13 @@ public class Atendente {
 
 	public void ausenciaProduto(){
 		System.out.println("Não há produto registrado");
+	}
+
+	public void ausenciaFruta(){
+		System.out.println("Não há fruta registrada");
+	}
+
+	public void ausenciaVerdura(){
+		System.out.println("Não há verdura registrada");
 	}
 }

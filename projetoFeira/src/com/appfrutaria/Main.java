@@ -24,9 +24,5 @@ public class Main {
 
 		} while (opcaoMenuUser != 4);
 
-
-
-
 	}
-
 }
