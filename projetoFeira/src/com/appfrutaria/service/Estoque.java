@@ -1,6 +1,7 @@
 package com.appfrutaria.service;
 import com.appfrutaria.model.Fruta;
 import com.appfrutaria.view.Atendente;
+import com.appfrutaria.Main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,9 +90,8 @@ public class Estoque {
 			case 3 -> {
 				int escolha = atendente.menuLista("Remoção ");
 				listarProduto(atendente, escolha);
-				if(escolha >= 1 && escolha <= 3){
-					aplicarIndex(escolha, atendente);
-				}
+				aplicarIndex(escolha, atendente);
+
 			}
 			case 4 -> {
 				return;
@@ -112,7 +112,7 @@ public class Estoque {
 			case 1 -> {
 				if(produtos.isEmpty()) {
 					atendente.ausenciaProduto();
-					return;
+					Main.main(new String[]{});
 				}
 
 				for(int index = 0; index < produtos.size(); index++) {
@@ -160,7 +160,13 @@ public class Estoque {
 
 	public void aplicarIndex(int escolha, Atendente atendente){
 		int index = atendente.writeIndex();
-		removerProduto(escolha, index, atendente);
+
+		if(index < produtos.size() && index > -1){
+			removerProduto(escolha, index, atendente);
+		}
+		else{
+			atendente.indexInvalido();
+		}
 	}
 
 	public void removerProduto(int escolha, int index, Atendente atendente) {
