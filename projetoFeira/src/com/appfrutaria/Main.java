@@ -26,6 +26,7 @@ public class Main {
 			} while (opcaoMenuUser != 4);
 		} catch (InputMismatchException e){
 			atendente.erroTipoDado();
+			main(args);
 		}
 
 	}

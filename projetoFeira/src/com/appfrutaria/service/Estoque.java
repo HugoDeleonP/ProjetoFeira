@@ -89,8 +89,9 @@ public class Estoque {
 			case 3 -> {
 				int escolha = atendente.menuLista("Remoção ");
 				listarProduto(atendente, escolha);
-				index = atendente.writeIndex();
-				removerProduto(escolha, index, atendente);
+				if(escolha >= 1 && escolha <= 3){
+					aplicarIndex(escolha, atendente);
+				}
 			}
 			case 4 -> {
 				return;
@@ -107,14 +108,13 @@ public class Estoque {
 	public void listarProduto(Atendente atendente,  int escolha){
 
 		boolean presencaElemento = false;
-
-		if(produtos.isEmpty()) {
-            atendente.ausenciaProduto();
-            return;
-		}
-
 		switch (escolha){
 			case 1 -> {
+				if(produtos.isEmpty()) {
+					atendente.ausenciaProduto();
+					return;
+				}
+
 				for(int index = 0; index < produtos.size(); index++) {
 					Produto produto = produtos.get(index);
 					atendente.showIndex(index);
@@ -158,6 +158,10 @@ public class Estoque {
 		}
 	}
 
+	public void aplicarIndex(int escolha, Atendente atendente){
+		int index = atendente.writeIndex();
+		removerProduto(escolha, index, atendente);
+	}
 
 	public void removerProduto(int escolha, int index, Atendente atendente) {
 
@@ -177,10 +181,6 @@ public class Estoque {
 
 				}
 
-				if(presencaElemento == false){
-					atendente.ausenciaFruta();
-					return;
-				}
 			}
 
 			case 3->{
@@ -193,10 +193,6 @@ public class Estoque {
 
 				}
 
-				if(presencaElemento == false){
-					atendente.ausenciaVerdura();
-					return;
-				}
 			}
 
 			default -> {
@@ -206,7 +202,6 @@ public class Estoque {
 
 
 	}
-
 	public Produto gerenciarTipo(int opcaoTipo, Atendente atendente){
 		switch(opcaoTipo){
 			case 1 ->{
