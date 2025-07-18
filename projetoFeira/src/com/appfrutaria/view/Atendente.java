@@ -46,6 +46,20 @@ public class Atendente {
 		return opcaoMenu;
 	}
 
+	public int menuLista(String tipoOperacao){
+		System.out.println("=---------| " + tipoOperacao +" |----------=");
+		System.out.println("|  1 - Todos                    |");
+		System.out.println("|  2 - Frutas                   |");
+		System.out.println("|  3 - Verduras                 |");
+		System.out.println("=-------------------------------=");
+		System.out.print("\nDigite o filtro de pesquisa: >");
+
+		int opcao = input.nextInt();
+		input.nextLine();
+
+		return opcao;
+	}
+
 	public void showIndex(int index){
 		System.out.println("=-----------| "+ index + " |-----------=");
 	}
@@ -92,8 +106,6 @@ public class Atendente {
 		return index;
 	}
 
-
-
 	public Scanner getInput() {
 		return input;
 	}
@@ -114,5 +126,17 @@ public class Atendente {
 	public void indexInvalido() {
 		System.out.println("Índice inválido");
 		System.out.println("Digite outro que tenha algum conteúdo.");
+	}
+
+	public void ausenciaProduto(){
+		System.out.println("Não há produto registrado");
+	}
+
+	public void ausenciaFruta(){
+		System.out.println("Não há fruta registrada");
+	}
+
+	public void ausenciaVerdura(){
+		System.out.println("Não há verdura registrada");
 	}
 }
