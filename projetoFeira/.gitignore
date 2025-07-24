@@ -1,0 +1,18 @@
+# Build
+/target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Maven local repo se estiver dentro do projeto (evite isso)
+/.mvn/
+
+# Arquivos temporários
+*.log
+*.class
+*.jar
+
+# SO
+.DS_Store
+Thumbs.db
