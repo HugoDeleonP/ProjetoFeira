@@ -29,7 +29,8 @@ public class ProdutoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             if( rs.next()){
-                System.out.println("Nome: " + rs.getString("nome"));
+                atendente.showNome();
+                System.out.println(rs.getString("nome"));
 
                 atendente.showPreco();
                 System.out.println(rs.getDouble("preco: "));
