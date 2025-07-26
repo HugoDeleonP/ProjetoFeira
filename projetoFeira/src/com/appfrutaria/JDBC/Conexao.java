@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-    private static final String URL = "jdbc:mysql://centerbeam.proxy.rlwy.net:22338";
+    private static final String URL = "jdbc:mysql://centerbeam.proxy.rlwy.net:22338/railway";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "frbJkDCwMYEehufrSYXKfFVnJLgKfxGG";
 

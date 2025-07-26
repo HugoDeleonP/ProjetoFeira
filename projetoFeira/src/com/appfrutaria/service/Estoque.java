@@ -1,6 +1,7 @@
 package com.appfrutaria.service;
 import com.appfrutaria.model.Fruta;
 import com.appfrutaria.view.Atendente;
+import com.appfrutaria.JDBC.DAO.*;
 import com.appfrutaria.Main;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class Estoque {
 	public void setVerduras(List<Verdura> verduras){
 		this.verduras = verduras;
 	}
+
 
 	//Fruta
 
@@ -75,10 +77,13 @@ public class Estoque {
 
 	public void gerenciarEstoque(Atendente atendente, int opcaoMenuUser) {
 		int index = 0;
+		Produto produto = new Produto();
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+
 		switch(opcaoMenuUser) {
 			case 1 -> {
 				int opcaoTipo = atendente.tipoProduto();
-				Produto produto = gerenciarTipo(opcaoTipo, atendente);
+				produto = gerenciarTipo(opcaoTipo, atendente);
 				produtos.add(produto);
 			}
 

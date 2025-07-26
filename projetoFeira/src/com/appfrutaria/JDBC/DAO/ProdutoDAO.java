@@ -2,6 +2,7 @@ package com.appfrutaria.JDBC.DAO;
 
 import com.appfrutaria.JDBC.Conexao;
 import com.appfrutaria.model.*;
+import com.appfrutaria.view.Atendente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 
 public class ProdutoDAO {
 
-    public void listar(){
+    public void listar(Atendente atendente, Produto produto){
         try{
             Connection conn = Conexao.getConnection();
 
@@ -28,7 +29,19 @@ public class ProdutoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             if( rs.next()){
-                ;
+                System.out.println("Nome: " + rs.getString("nome"));
+
+                atendente.showPreco();
+                System.out.println(rs.getDouble("preco: "));
+
+                atendente.showQuantidade();
+                System.out.println(rs.getInt("quantidade"));
+
+                atendente.showPeso();
+                System.out.println(rs.getDouble("peso"));
+
+                atendente.showTipo();
+                System.out.println(rs.getString("tipo"));
             }
             else {
                 System.out.println("erro");
