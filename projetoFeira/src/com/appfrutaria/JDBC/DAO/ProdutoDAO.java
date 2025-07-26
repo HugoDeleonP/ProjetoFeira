@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class ProdutoDAO {
 
-    public int inserir(Atendente atendente, Produto produto){
+    public int inserir(Atendente atendente){
         int idGerado = -1;
         try {
             Connection conn = Conexao.getConnection();
@@ -45,6 +45,10 @@ public class ProdutoDAO {
 
             stmt.executeUpdate();
             idGerado = primaryKey(stmt);
+            atendente.operacaoRealizada();
+
+            stmt.close();
+            conn.close();
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -99,9 +103,32 @@ public class ProdutoDAO {
             else {
                 System.out.println("erro");
             }
+            stmt.close();
+            conn.close();
 
         } catch (
                 SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deletar(Atendente atendente){
+        try {
+            Connection conn = Conexao.getConnection();
+
+            String sql = "DELETE FROM produto WHERE id = ?";
+
+            int id = atendente.writeID();
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+            atendente.operacaoRealizada();
+            stmt.close();
+            conn.close();
+        }
+        catch (SQLException e){
             e.printStackTrace();
         }
     }

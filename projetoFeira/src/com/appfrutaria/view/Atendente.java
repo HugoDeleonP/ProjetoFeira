@@ -88,6 +88,14 @@ public class Atendente {
 		System.out.print("Tipo: ");
 	}
 
+	public int writeID(){
+		System.out.println("Digite o ID do produto");
+		int id = input.nextInt();
+		input.nextLine();
+
+		return id;
+	}
+
 	public String writeNome() {
 		System.out.println("Digite o nome do produto: ");
 
@@ -130,14 +138,16 @@ public class Atendente {
 		return index;
 	}
 
-
-
 	public Scanner getInput() {
 		return input;
 	}
 
 	public void setInput(Scanner input) {
 		this.input = input;
+	}
+
+	public void operacaoRealizada(){
+		System.out.println("Operação realizada com sucesso!");
 	}
 
 	public void erroTipoDado(){
