@@ -20,7 +20,6 @@ public class Atendente {
 		System.out.println("|  2 - Verdura                  |");
 		System.out.println("=-------------------------------=");
 		System.out.print("\nDigite o tipo: > ");
-		System.out.println("\n\n");
 
 		int opcaoTipo = input.nextInt();
 		input.nextLine();
