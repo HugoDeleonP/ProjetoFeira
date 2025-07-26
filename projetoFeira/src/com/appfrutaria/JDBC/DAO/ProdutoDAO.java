@@ -67,7 +67,7 @@ public class ProdutoDAO {
         return idGerado;
     }
 
-    public void listar(Atendente atendente, Produto produto){
+    public void listar(Atendente atendente){
         try{
             Connection conn = Conexao.getConnection();
 

@@ -50,26 +50,19 @@ public class Estoque {
 
 	public void gerenciarEstoque(Atendente atendente, int opcaoMenuUser) {
 		int index = 0;
-		Produto produto = new Produto();
-		ProdutoDAO produtoDAO = new ProdutoDAO();
 
 		switch(opcaoMenuUser) {
 			case 1 -> {
 				int opcaoTipo = atendente.tipoProduto();
-				produto = gerenciarTipo(opcaoTipo, atendente);
-				produtos.add(produto);
+				gerenciarTipo(opcaoTipo, atendente);
 			}
 
 			case 2 -> {
-				int escolha = atendente.menuLista("Listagem");
-				listarProduto(atendente, escolha);
+				produtoData.listar(atendente);
 			}
 
 			case 3 -> {
-				int escolha = atendente.menuLista("Remoção ");
-				listarProduto(atendente, escolha);
-				aplicarIndex(escolha, atendente);
-
+				produtoData.deletar(atendente);
 			}
 			case 4 -> {
 				return;
@@ -83,127 +76,19 @@ public class Estoque {
 		}
 	}
 
-	public void listarProduto(Atendente atendente,  int escolha){
-
-		boolean presencaElemento = false;
-		switch (escolha){
-			case 1 -> {
-				if(produtos.isEmpty()) {
-					atendente.ausenciaProduto();
-					Main.main(new String[]{});
-				}
-
-				for(int index = 0; index < produtos.size(); index++) {
-					Produto produto = produtos.get(index);
-					atendente.showIndex(index);
-					System.out.println(produto);
-				}
-			}
-
-			case 2 ->{
-				for(int index = 0; index <produtos.size(); index++){
-					if(produtos.get(index) instanceof Fruta fruta){
-						atendente.showIndex(index);
-						System.out.println(fruta);
-						presencaElemento = true;
-					}
-				}
-
-				if(presencaElemento == false){
-					atendente.ausenciaFruta();
-					return;
-				}
-			}
-
-			case 3 ->{
-				for (int index = 0; index < produtos.size(); index++){
-					if(produtos.get(index) instanceof Verdura verdura){
-						atendente.showIndex(index);
-						System.out.println(verdura);
-						presencaElemento = true;
-					}
-				}
-
-				if (presencaElemento == false){
-					atendente.ausenciaVerdura();
-					return;
-				}
-			}
-
-			default -> {
-				atendente.numeroInvalido();
-			}
-		}
-	}
-
-	public void aplicarIndex(int escolha, Atendente atendente){
-		int index = atendente.writeIndex();
-
-		if(index < produtos.size() && index > -1){
-			removerProduto(escolha, index, atendente);
-		}
-		else{
-			atendente.indexInvalido();
-		}
-	}
-
-	public void removerProduto(int escolha, int index, Atendente atendente) {
-
-		boolean presencaElemento = false;
-
-		switch (escolha){
-			case 1 ->{
-					produtos.remove(index);
-			}
-
-			case 2 ->{
-				for(index = 0; index < produtos.size(); index++){
-					if(produtos.get(index) instanceof Fruta fruta){
-						produtos.remove(index);
-						presencaElemento = true;
-					}
-
-				}
-
-			}
-
-			case 3->{
-
-				for(index = 0; index < produtos.size(); index++){
-					if(produtos.get(index) instanceof Verdura verdura){
-						produtos.remove(index);
-						presencaElemento = true;
-					}
-
-				}
-
-			}
-
-			default -> {
-				atendente.numeroInvalido();
-			}
-		}
-
-
-	}
-	public Produto gerenciarTipo(int opcaoTipo, Atendente atendente){
+	public void gerenciarTipo(int opcaoTipo, Atendente atendente){
 		switch(opcaoTipo){
 			case 1 ->{
-				Produto fruta = new Fruta();
-				fruta = formerFruta(atendente);
-				return fruta;
+				frutaData.inserir(produtoData, atendente);
 			}
 
 			case 2 -> {
-				Produto verdura = new Verdura();
-				verdura = formerVerdura(atendente);
-
-				return verdura;
+				verduraData.inserir(produtoData, atendente);
 			}
 
 			default ->{
 				atendente.numeroInvalido();
-				return null;
+				gerenciarTipo(opcaoTipo, atendente);
 			}
 		}
 	}
