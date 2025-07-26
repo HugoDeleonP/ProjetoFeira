@@ -19,7 +19,8 @@ public class Atendente {
 		System.out.println("|  1 - Fruta                    |");
 		System.out.println("|  2 - Verdura                  |");
 		System.out.println("=-------------------------------=");
-		System.out.print("\nDigite o tipo: >");
+		System.out.print("\nDigite o tipo: > ");
+		System.out.println("\n\n");
 
 		int opcaoTipo = input.nextInt();
 		input.nextLine();
@@ -31,13 +32,13 @@ public class Atendente {
 		int opcaoMenu;
 
 
-		System.out.println("=-----------| MENU |------------=");
+		System.out.println("\n\n=-----------| MENU |------------=");
 		System.out.println("|  1 - Cadastrar produto	    |");
 		System.out.println("|  2 - Listar produto		    |");
 		System.out.println("|  3 - Remover produto		    |");
 		System.out.println("|  4 - Sair			            |");
 		System.out.println("=-------------------------------=");
-		System.out.print("\nDigite a opção que deseja: >");
+		System.out.print("\nDigite a opção que deseja: > ");
 
 		opcaoMenu = input.nextInt();
 		input.nextLine();
@@ -65,7 +66,7 @@ public class Atendente {
 	}
 
 	public void showID(){
-		System.out.println("ID: ");
+		System.out.print("ID: ");
 	}
 
 	public void showNome(){

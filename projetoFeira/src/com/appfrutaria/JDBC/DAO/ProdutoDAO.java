@@ -53,7 +53,7 @@ public class ProdutoDAO {
         try{
             Connection conn = Conexao.getConnection();
 
-            String sql = "select produto.nome, produto.preco, produto.quantidade,\n" +
+            String sql = "select produto.id, produto.nome, produto.preco, produto.quantidade,\n" +
                     "\tCASE WHEN produto.tipo = 'fruta' THEN fruta.peso\n" +
                     "    ELSE NULL\n" +
                     "    END AS peso,\n" +
@@ -66,7 +66,14 @@ public class ProdutoDAO {
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            if( rs.next()){
+            while ( rs.next()){
+                double peso = rs.getDouble("peso");
+                String tipoVerdura = rs.getString("tipo");
+
+                System.out.println("\n\n=-------------------------------=");
+                atendente.showID();
+                System.out.println(rs.getInt("id"));
+
                 atendente.showNome();
                 System.out.println(rs.getString("nome"));
 
@@ -77,19 +84,17 @@ public class ProdutoDAO {
                 System.out.println(rs.getInt("quantidade"));
 
                 atendente.showPeso();
-                System.out.println(rs.getDouble("peso"));
+                System.out.println(peso != 0? peso:"-");
 
                 atendente.showTipo();
-                System.out.println(rs.getString("tipo"));
-            }
-            else {
-                System.out.println("erro");
+                System.out.println(tipoVerdura != null? tipoVerdura:"-");
+                System.out.println("=-------------------------------=");
             }
             stmt.close();
+            rs.close();
             conn.close();
 
-        } catch (
-                SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
