@@ -153,4 +153,17 @@ public class Atendente {
 		System.out.println("Índice inválido");
 		System.out.println("Digite outro que tenha algum conteúdo.");
 	}
+
+	public void ausenciaProduto(){
+		System.out.println("Não há produto registrado");
+	}
+
+	public void ausenciaFruta(){
+		System.out.println("Não há fruta registrada");
+	}
+
+	public void ausenciaVerdura(){
+		System.out.println("Não há verdura registrada");
+	}
+
 }
