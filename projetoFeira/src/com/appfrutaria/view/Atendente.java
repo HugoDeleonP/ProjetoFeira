@@ -69,23 +69,23 @@ public class Atendente {
 	}
 
 	public void showNome(){
-		System.out.println("Nome: ");
+		System.out.print("Nome: ");
 	}
 
 	public void showPreco(){
-		System.out.println("Preço: ");
+		System.out.print("Preço: ");
 	}
 
 	public void showQuantidade(){
-		System.out.println("Quantidade: ");
+		System.out.print("Quantidade: ");
 	}
 
 	public void showPeso(){
-		System.out.println("Peso: ");
+		System.out.print("Peso: ");
 	}
 
 	public void showTipo(){
-		System.out.println("Tipo: ");
+		System.out.print("Tipo: ");
 	}
 
 	public String writeNome() {

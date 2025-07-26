@@ -28,7 +28,7 @@ public class ProdutoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             if( rs.next()){
-                System.out.println("consulta realizada com sucesso");
+                ;
             }
             else {
                 System.out.println("erro");
