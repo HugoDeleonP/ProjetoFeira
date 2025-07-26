@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class VerduraDAO {
     public void inserir(ProdutoDAO produtoDAO, Atendente atendente){
 
-        int idProduto = produtoDAO.inserir(atendente);
+        int idProduto = produtoDAO.inserir(atendente, "verdura");
 
         try{
             Connection conn = Conexao.getConnection();
@@ -24,7 +24,7 @@ public class VerduraDAO {
             stmt.setInt(1, idProduto);
             stmt.setString(2, tipo);
 
-            stmt.executeQuery();
+            stmt.executeUpdate();
             atendente.operacaoRealizada();
 
             stmt.close();

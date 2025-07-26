@@ -13,7 +13,7 @@ public class FrutaDAO {
 
     public void inserir(ProdutoDAO produtoDAO, Atendente atendente){
 
-        int idProduto = produtoDAO.inserir(atendente);
+        int idProduto = produtoDAO.inserir(atendente, "fruta");
 
         try{
             Connection conn = Conexao.getConnection();
@@ -26,7 +26,7 @@ public class FrutaDAO {
             stmt.setInt(1, idProduto);
             stmt.setDouble(2, peso);
 
-            stmt.executeQuery();
+            stmt.executeUpdate();
             atendente.operacaoRealizada();
 
             stmt.close();

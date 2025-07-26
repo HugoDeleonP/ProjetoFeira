@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class ProdutoDAO {
 
-    public int inserir(Atendente atendente){
+    public int inserir(Atendente atendente, String tipo){
         int idGerado = -1;
         try {
             Connection conn = Conexao.getConnection();
@@ -16,24 +16,6 @@ public class ProdutoDAO {
             String nome = atendente.writeNome();
             double preco = atendente.writePreco();
             int quantidade =atendente.writeQuantidade();
-            int escolha = atendente.tipoProduto();
-            String tipo;
-
-            do {
-                switch (escolha){
-                    case 1 ->{
-                        tipo = "fruta";
-                    }
-                    case 2 ->{
-                        tipo = "verdura";
-                    }
-                    default -> {
-                        atendente.numeroInvalido();
-                        tipo = null;
-                    }
-                }
-            }
-            while(tipo == null);
 
             String sql = "INSERT INTO produto (nome, preco, quantidade, tipo) VALUES (?, ?, ? , ?)";
 
@@ -89,7 +71,7 @@ public class ProdutoDAO {
                 System.out.println(rs.getString("nome"));
 
                 atendente.showPreco();
-                System.out.println(rs.getDouble("preco: "));
+                System.out.println(rs.getDouble("preco"));
 
                 atendente.showQuantidade();
                 System.out.println(rs.getInt("quantidade"));
