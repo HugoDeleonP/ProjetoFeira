@@ -11,41 +11,14 @@ import com.appfrutaria.model.Produto;
 
 public class Estoque {
 
-	private List<Fruta> frutas = new ArrayList<>();
-	private List<Verdura> verduras = new ArrayList<>();
-	private List<Produto> produtos = new ArrayList<>();
+	private ProdutoDAO produtoData;
+	private FrutaDAO frutaData;
+	private VerduraDAO verduraData;
 
 	public Estoque() {
-		frutas = new ArrayList<>();
-		verduras = new ArrayList<>();
-		produtos = new ArrayList<>();
-	}
-
-	public List<Verdura> getVerduras(){
-		return verduras;
-	}
-
-	public void setVerduras(List<Verdura> verduras){
-		this.verduras = verduras;
-	}
-
-
-	//Fruta
-
-	public List<Fruta> getFrutas(){
-		return frutas;
-	}
-
-	public void setFrutas(List<Fruta> frutas) {
-		this.frutas = frutas;
-	}
-
-	public List<Produto> getProdutos(){
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos){
-		this.produtos = produtos;
+		produtoData = new ProdutoDAO();
+		frutaData = new FrutaDAO();
+		verduraData = new VerduraDAO();
 	}
 
 	public Produto formerProduto(Atendente atendente){
