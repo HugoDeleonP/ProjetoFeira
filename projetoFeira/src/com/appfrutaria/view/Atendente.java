@@ -64,6 +64,30 @@ public class Atendente {
 		System.out.println("=-----------| "+ index + " |-----------=");
 	}
 
+	public void showID(){
+		System.out.println("ID: ");
+	}
+
+	public void showNome(){
+		System.out.println("Nome: ");
+	}
+
+	public void showPreco(){
+		System.out.println("Preço: ");
+	}
+
+	public void showQuantidade(){
+		System.out.println("Quantidade: ");
+	}
+
+	public void showPeso(){
+		System.out.println("Peso: ");
+	}
+
+	public void showTipo(){
+		System.out.println("Tipo: ");
+	}
+
 	public String writeNome() {
 		System.out.println("Digite o nome do produto: ");
 
