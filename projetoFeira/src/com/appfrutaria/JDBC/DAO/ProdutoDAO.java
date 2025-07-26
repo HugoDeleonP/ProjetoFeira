@@ -4,12 +4,64 @@ import com.appfrutaria.JDBC.Conexao;
 import com.appfrutaria.model.*;
 import com.appfrutaria.view.Atendente;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ProdutoDAO {
+
+    public int inserir(Atendente atendente, Produto produto){
+        int idGerado = -1;
+        try {
+            Connection conn = Conexao.getConnection();
+
+            String nome = atendente.writeNome();
+            double preco = atendente.writePreco();
+            int quantidade =atendente.writeQuantidade();
+            int escolha = atendente.tipoProduto();
+            String tipo;
+
+            do {
+                switch (escolha){
+                    case 1 ->{
+                        tipo = "fruta";
+                    }
+                    case 2 ->{
+                        tipo = "verdura";
+                    }
+                    default -> {
+                        atendente.numeroInvalido();
+                        tipo = null;
+                    }
+                }
+            }
+            while(tipo == null);
+
+            String sql = "INSERT INTO produto (nome, preco, quantidade, tipo) VALUES (?, ?, ? , ?)";
+
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, nome);
+            stmt.setDouble(2, preco);
+            stmt.setInt(3, quantidade);
+            stmt.setString(4, tipo);
+
+            stmt.executeUpdate();
+            idGerado = primaryKey(stmt);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return idGerado;
+    }
+
+    private int primaryKey(PreparedStatement stmt) throws SQLException {
+        ResultSet rs = stmt.getGeneratedKeys();
+        int idGerado = -1;
+
+        if(rs.next()){
+            idGerado = rs.getInt(1);
+        }
+
+        return idGerado;
+    }
 
     public void listar(Atendente atendente, Produto produto){
         try{
