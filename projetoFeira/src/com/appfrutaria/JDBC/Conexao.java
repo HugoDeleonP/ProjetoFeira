@@ -5,19 +5,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-    private static final String URL = "jdbc:mysql://localhost/feira_db";
+    private static final String URL = "jdbc:mysql://centerbeam.proxy.rlwy.net:22338";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "frbJkDCwMYEehufrSYXKfFVnJLgKfxGG";
 
-    public static Connection connection() throws SQLException{
+    public static Connection getConnection() throws SQLException{
         try {
-            Class.forName("com.mysql.jdbc.Driver");
 
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         }
 
-        catch(ClassNotFoundException e){
-            throw new SQLException(e.getException());
+        catch (SQLException e) {
+            throw new RuntimeException("Erro ao conectar com o banco de dados", e);
         }
+
     }
 }
