@@ -89,8 +89,10 @@ public class Estoque {
 
 			case 3 -> {
 				int escolha = atendente.menuLista("Remoção ");
-				listarProduto(atendente, escolha);
-				aplicarIndex(escolha, atendente);
+				Boolean presencaElemento = listarProduto(atendente, escolha);
+				if (presencaElemento == true){
+					aplicarIndex(escolha, atendente);
+				}
 
 			}
 			case 4 -> {
@@ -105,7 +107,7 @@ public class Estoque {
 		}
 	}
 
-	public void listarProduto(Atendente atendente,  int escolha){
+	public Boolean listarProduto(Atendente atendente,  int escolha){
 
 		boolean presencaElemento = false;
 		switch (escolha){
@@ -119,6 +121,7 @@ public class Estoque {
 					Produto produto = produtos.get(index);
 					atendente.showIndex(index);
 					System.out.println(produto);
+					presencaElemento = true;
 				}
 			}
 
@@ -127,13 +130,12 @@ public class Estoque {
 					if(produtos.get(index) instanceof Fruta fruta){
 						atendente.showIndex(index);
 						System.out.println(fruta);
-						presencaElemento = true;
 					}
+					presencaElemento = true;
 				}
 
 				if(presencaElemento == false){
 					atendente.ausenciaFruta();
-					return;
 				}
 			}
 
@@ -142,20 +144,23 @@ public class Estoque {
 					if(produtos.get(index) instanceof Verdura verdura){
 						atendente.showIndex(index);
 						System.out.println(verdura);
-						presencaElemento = true;
 					}
+					presencaElemento = true;
 				}
 
 				if (presencaElemento == false){
 					atendente.ausenciaVerdura();
-					return;
 				}
 			}
 
 			default -> {
 				atendente.numeroInvalido();
+				return null;
 			}
+
 		}
+
+		return presencaElemento;
 	}
 
 	public void aplicarIndex(int escolha, Atendente atendente){
