@@ -65,7 +65,8 @@ public class Estoque {
 				produtoData.deletar(atendente);
 			}
 			case 4 -> {
-				return;
+				atendente.encerramento();
+				System.exit(1000);;
 			}
 
 			default ->{

@@ -175,5 +175,9 @@ public class Atendente {
 	public void ausenciaVerdura(){
 		System.out.println("Não há verdura registrada");
 	}
+	
+	public void encerramento() {
+		System.out.println("Software encerrado!");
+	}
 
 }
