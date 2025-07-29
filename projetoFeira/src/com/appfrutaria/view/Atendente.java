@@ -32,10 +32,10 @@ public class Atendente {
 
 
 		System.out.println("\n\n=-----------| MENU |------------=");
-		System.out.println("|  1 - Cadastrar produto	    |");
-		System.out.println("|  2 - Listar produto		    |");
-		System.out.println("|  3 - Remover produto		    |");
-		System.out.println("|  4 - Sair			            |");
+		System.out.println("|  1 - Cadastrar produto	|");
+		System.out.println("|  2 - Listar produto		|");
+		System.out.println("|  3 - Remover produto		|");
+		System.out.println("|  4 - Sair			|");
 		System.out.println("=-------------------------------=");
 		System.out.print("\nDigite a opção que deseja: > ");
 
