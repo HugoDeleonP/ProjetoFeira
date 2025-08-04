@@ -1,6 +1,5 @@
 package com.appfrutaria.view;
-
-import java.util.List;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.appfrutaria.model.Fruta;
@@ -15,48 +14,83 @@ public class Atendente {
 	}
 
 	public int tipoProduto(){
-		System.out.println("=-----------| MENU |------------=");
-		System.out.println("|  1 - Fruta                    |");
-		System.out.println("|  2 - Verdura                  |");
-		System.out.println("=-------------------------------=");
-		System.out.print("\nDigite o tipo: >");
-
-		int opcaoTipo = input.nextInt();
-		input.nextLine();
+		
+		int opcaoTipo = 0;
+		
+			do {
+				
+				try {
+				System.out.println("=-----------| MENU |------------=");
+				System.out.println("|  1 - Fruta                    |");
+				System.out.println("|  2 - Verdura                  |");
+				System.out.println("=-------------------------------=");
+				System.out.print("\nDigite o tipo: >");
+	
+				opcaoTipo = input.nextInt();
+				input.nextLine();
+				
+				}
+				catch (InputMismatchException e) {
+					erroTipoDado();
+					input.nextLine();
+				}
+				
+			} while(opcaoTipo != 1 && opcaoTipo != 2);
 
 		return opcaoTipo;
 	}
 
-	public int menuPrincipal() {
-		int opcaoMenu;
+	public int menuPrincipal() throws InputMismatchException {
+		int opcaoMenu = -1;
+		
+		do {
+			try {
+				
+				System.out.println("=-----------| MENU |------------=");
+				System.out.println("|  1 - Cadastrar produto        |");
+				System.out.println("|  2 - Listar produto           |");
+				System.out.println("|  3 - Remover produto          |");
+				System.out.println("|  4 - Sair                     |");
+				System.out.println("=-------------------------------=");
+				System.out.print("\nDigite a opção que deseja: >");
 
+				opcaoMenu = input.nextInt();
+				input.nextLine();
 
-		System.out.println("=-----------| MENU |------------=");
-		System.out.println("|  1 - Cadastrar produto	    |");
-		System.out.println("|  2 - Listar produto		    |");
-		System.out.println("|  3 - Remover produto		    |");
-		System.out.println("|  4 - Sair			            |");
-		System.out.println("=-------------------------------=");
-		System.out.print("\nDigite a opção que deseja: >");
+			}
+			catch(InputMismatchException e) {
+				erroTipoDado();
+				input.nextLine();
+			}
 
-		opcaoMenu = input.nextInt();
-		input.nextLine();
-
+		} while(opcaoMenu < 1 && opcaoMenu > 4 );
 
 		return opcaoMenu;
+		
 	}
 
 	public int menuLista(String tipoOperacao){
-		System.out.println("=---------| " + tipoOperacao +" |----------=");
-		System.out.println("|  1 - Todos                    |");
-		System.out.println("|  2 - Frutas                   |");
-		System.out.println("|  3 - Verduras                 |");
-		System.out.println("=-------------------------------=");
-		System.out.print("\nDigite o filtro de pesquisa: >");
+		
+		int opcao = 0;
+		
+		do {
+			try {
+				System.out.println("=---------| " + tipoOperacao +" |----------=");
+				System.out.println("|  1 - Todos                    |");
+				System.out.println("|  2 - Frutas                   |");
+				System.out.println("|  3 - Verduras                 |");
+				System.out.println("=-------------------------------=");
+				System.out.print("\nDigite o filtro de pesquisa: >");
 
-		int opcao = input.nextInt();
-		input.nextLine();
-
+				opcao = input.nextInt();
+				input.nextLine();
+			}
+			catch(InputMismatchException e) {
+				erroTipoDado();
+				input.nextLine();
+			}
+		} while(opcao < 1 && opcao > 3);
+		
 		return opcao;
 	}
 
@@ -71,27 +105,79 @@ public class Atendente {
 	}
 
 	public double writePreco() {
-		System.out.println("Digite o preço do produto: ");
-		double preco = input.nextDouble();
-		input.nextLine();
+		
+		boolean entradaValida = false;
+		
+		double preco = 0;
+		
+		do {
+			try {
+				System.out.println("Digite o preço do produto: ");
+				preco = input.nextDouble();
+				input.nextLine();
+				
+				entradaValida = true;
+			}
+			catch(InputMismatchException e){
+				erroTipoDado();
+				input.nextLine();
+			}
+
+		} while(entradaValida == false);
+				
 
 		return preco;
 	}
 
 	public int writeQuantidade() {
+		boolean entradaValida = false;
+		
 		int quantidade = 0;
-		System.out.println("Digite a quantidade de produto: ");
-		quantidade = input.nextInt();
-		input.nextLine();
+		
+		do {
+			
+			try {
+				System.out.println("Digite a quantidade de produto: ");
+				quantidade = input.nextInt();
+				input.nextLine();
+				
+				entradaValida = true;
 
+			} catch(InputMismatchException e) {
+				erroTipoDado();
+				input.nextLine();
+			}
+			
+		} while(entradaValida == false);
+		
+				
 		return quantidade;
 	}
 
 	public double writePeso(){
-		System.out.println("Digite o peso da fruta: ");
-		double peso = input.nextDouble();
-		input.nextLine();
+		boolean entradaValida = false;
+		
+		double peso = 0;
+		
+		do {
+			
+			try {
+				System.out.println("Digite o peso da fruta: ");
+				peso = input.nextDouble();
+				input.nextLine();
+				
+				entradaValida = true;
+			}
+			catch(InputMismatchException e) {
+				erroTipoDado();
+				input.nextLine();
+			}
+			
+		} while(entradaValida == false);
+		
 
+		
+		
 		return peso;
 	}
 
@@ -101,8 +187,25 @@ public class Atendente {
 	}
 
 	public int writeIndex() {
-		System.out.println("Digite o indice do produto que gostaria de tirar: ");
-		int index = input.nextInt();
+		boolean entradaValida = false;
+		
+		int index = -1;
+		
+		do {
+			
+			try {
+				System.out.println("Digite o indice do produto que gostaria de tirar: ");
+				index = input.nextInt();
+				
+				entradaValida = true;
+			}
+			catch(InputMismatchException e) {
+				erroTipoDado();
+				input.nextLine();
+			}
+
+		} while(entradaValida == false);		
+		
 		return index;
 	}
 
@@ -115,28 +218,28 @@ public class Atendente {
 	}
 
 	public void erroTipoDado(){
-		System.out.println("Digite com o tipo de dado correto.");
+		System.err.println("Digite com o tipo de dado correto.");
 	}
 
 	public void numeroInvalido() {
-		System.out.println("Número inválido.");
-		System.out.println("Digite outro que esteja de acordo com a legenda");
+		System.err.println("Número inválido.");
+		System.err.println("Digite outro que esteja de acordo com a legenda");
 	}
 
 	public void indexInvalido() {
-		System.out.println("Índice inválido");
-		System.out.println("Digite outro que tenha algum conteúdo.");
+		System.err.println("Índice inválido");
+		System.err.println("Digite outro que tenha algum conteúdo.");
 	}
 
 	public void ausenciaProduto(){
-		System.out.println("Não há produto registrado");
+		System.err.println("Não há produto registrado");
 	}
 
 	public void ausenciaFruta(){
-		System.out.println("Não há fruta registrada");
+		System.err.println("Não há fruta registrada");
 	}
 
 	public void ausenciaVerdura(){
-		System.out.println("Não há verdura registrada");
+		System.err.println("Não há verdura registrada");
 	}
 }

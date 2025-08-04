@@ -11,23 +11,19 @@ import com.appfrutaria.model.Verdura;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InputMismatchException {
 		Scanner input = new Scanner(System.in);
 
 		int opcaoMenuUser;
 
 		Atendente atendente = new Atendente();
 		Estoque estoque = new Estoque();
-		try{
-			do {
-				opcaoMenuUser = atendente.menuPrincipal();
-				estoque.gerenciarEstoque(atendente, opcaoMenuUser);
+		do {
+			
+			opcaoMenuUser = atendente.menuPrincipal();
+			estoque.gerenciarEstoque(atendente, opcaoMenuUser);
 
-			} while (opcaoMenuUser != 4);
-		} catch (InputMismatchException e){
-			atendente.erroTipoDado();
-			main(args);
-		}
+		} while (opcaoMenuUser != 4);
 
 	}
 }
